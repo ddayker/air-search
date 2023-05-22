@@ -16,4 +16,6 @@
     <string name="favorites">Favorites</string>
     <string name="search">Search</string>
     <string name="all">All</string>
+    <string name="urrent_flights">Сurrent flights</string>
+    <string name="current_flights">Current flights:</string>
 </resources>
