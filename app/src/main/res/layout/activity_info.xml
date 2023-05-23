@@ -47,12 +47,12 @@
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/radioButton"
+                    app:layout_constraintEnd_toStartOf="@+id/favoriteButton"
                     app:layout_constraintStart_toEndOf="@+id/backButton"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <RadioButton
-                    android:id="@+id/radioButton"
+                <CheckBox
+                    android:id="@+id/favoriteButton"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:textColor="@color/black"
@@ -130,16 +130,6 @@
             android:layout_marginStart="20dp"
             android:textSize="24sp"
             tools:text="AEROPORT">
-
-        </TextView>
-
-        <TextView
-            android:id="@+id/tvTerminal1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:textSize="24sp"
-            tools:text="Terminal C">
 
         </TextView>
 

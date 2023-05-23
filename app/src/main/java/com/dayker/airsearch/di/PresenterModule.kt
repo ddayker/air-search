@@ -14,16 +14,9 @@ val presenterModule = module {
     }
     factory<InfoContract.Presenter> {
         InfoPresenter(
-            apiService = get()
+            apiService = get(),
+            dao = get()
         )
     }
-//    factory<CoinPresenterInterface> {
-//        CoinFragmentPresenter(
-//            view = get(),
-//            cryptoApiService = get(),
-//            shared = get()
-//        )
-//    }
-//    factory<UserPresenterInterface> { UserFragmentPresenter(view = get(), userApiService = get()) }
 }
 

@@ -15,8 +15,6 @@ data class ResponseX(
     val arrIcao: String,
     @SerializedName("arr_name")
     val arrName: String,
-    @SerializedName("arr_terminal")
-    val arrTerminal: String,
     @SerializedName("arr_time")
     val arrTime: String,
     @SerializedName("dep_time")
@@ -33,8 +31,6 @@ data class ResponseX(
     val depIcao: String,
     @SerializedName("dep_name")
     val depName: String,
-    @SerializedName("dep_terminal")
-    val depTerminal: String,
     @SerializedName("flag")
     val flag: String,
     @SerializedName("flight_icao")
