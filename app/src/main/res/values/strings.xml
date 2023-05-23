@@ -18,4 +18,7 @@
     <string name="all">All</string>
     <string name="urrent_flights">Сurrent flights</string>
     <string name="current_flights">Current flights:</string>
+    <string name="icao">ICAO</string>
+    <string name="departure">Departure:</string>
+    <string name="departure_">Departure:</string>
 </resources>

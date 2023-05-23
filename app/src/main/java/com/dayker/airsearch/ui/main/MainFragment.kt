@@ -16,10 +16,12 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.koin.android.ext.android.inject
 
 class MainFragment : Fragment(), MainContract.View {
 
     private var binding: FragmentMainBinding? = null
+    private val presenter: MainContract.Presenter by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,40 +34,24 @@ class MainFragment : Fragment(), MainContract.View {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val apiService = retrofitInit().create(ApiService::class.java)
-
-        initRecyclerView()
-        CoroutineScope(Dispatchers.IO).launch {
-            try {
-                val response =
-                    apiService.getFlights(
-                        API_KEY
-                    )
-                withContext(Dispatchers.Main) {
-                    println(response)
-                    setContent(response.response)
-                }
-            } catch (e: Exception) {
-                println(javaClass.simpleName +  e.message)
-            }
-        }
-
+        presenter.attachView(this)
+        presenter.downloadDataFromApi()
 
     }
 
-     fun initRecyclerView() {
+     override fun initRecyclerView() {
          val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
          binding?.rv?.layoutManager = layoutManager
      }
 
-     fun setContent(flights: List<Response>) {
+     override fun setContent(flights: List<Response>) {
         val adapter = MainAdapter(flights)
         binding?.rv?.adapter = adapter
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-//        presenter.detachView()
+        presenter.detachView()
     }
 
 }
