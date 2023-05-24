@@ -13,10 +13,16 @@ interface FlightDao {
     @Query("SELECT * FROM flight")
     suspend fun getAll(): List<Flight>
 
+    @Query("SELECT * FROM flight WHERE icao = :flightId")
+    fun getFlight(flightId: String): Flight?
+
     @Insert
     suspend fun insert(flight: Flight)
 
     @Query("DELETE FROM flight WHERE icao = :flightICAO")
     suspend fun deleteFlight(flightICAO: String)
+
+    @Query("SELECT COUNT(*) FROM flight WHERE icao = :flightICAO")
+    suspend fun isFlightInBD(flightICAO: String): Int
 
 }

@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.dayker.airsearch.R
 
-class SearchFragment : Fragment() {
+class SearchFragment : Fragment(), SearchContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

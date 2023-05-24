@@ -3,12 +3,9 @@ package com.dayker.airsearch.ui.info
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.room.ColumnInfo
-import com.dayker.airsearch.R
 import com.dayker.airsearch.database.entity.Flight
 import com.dayker.airsearch.databinding.ActivityInfoBinding
 import com.dayker.airsearch.model.ResponseX
-import com.dayker.airsearch.ui.main.MainContract
 import com.dayker.airsearch.utils.Constants.ICAO_KEY
 import org.koin.android.ext.android.inject
 
@@ -25,7 +22,9 @@ class InfoActivity : AppCompatActivity(), InfoContract.View {
 
         val icao = intent.getStringExtra(ICAO_KEY)
         if (icao != null) {
-            presenter.downloadDataFromApi(icao)
+            if (presenter.checkForFavoriteAndDownload(icao)) {
+                binding.favoriteButton.isChecked = true
+            }
         }
 
         with(binding) {
@@ -42,23 +41,34 @@ class InfoActivity : AppCompatActivity(), InfoContract.View {
         }
     }
 
-    @SuppressLint("SetTextI18n")
-    override fun setContent(info: ResponseX) {
+    override fun setContent(flight: ResponseX) {
         with(binding) {
-            titleICAO.text = info.flightIcao
-            company.text = info.airlineName
-            status.text = info.status
-            tvCity1.text = info.depCity
-            tvAirport1.text = info.depName
-            tvTime1.text = info.depTime
-            tvRealTime1.text = info.depActualTime
-            tvCity2.text = info.arrCity
-            tvAirport2.text = info.arrName
-            tvTime2.text = info.arrTime
-            tvRealTime2.text = info.arrActualTime
+            titleICAO.text = flight.flightIcao
+            company.text = flight.airlineName
+            status.text = flight.status
+            tvCity1.text = flight.depCity
+            tvAirport1.text = flight.depName
+            tvTime1.text = flight.depTime
+            tvRealTime1.text = flight.depActualTime
+            tvCity2.text = flight.arrCity
+            tvAirport2.text = flight.arrName
+            tvTime2.text = flight.arrTime
+            tvRealTime2.text = flight.arrActualTime
         }
     }
 
+    override fun setContent(flight: Flight) {
+        with(binding) {
+            titleICAO.text = flight.icao
+            company.text = flight.company
+            tvCity1.text = flight.depCity
+            tvAirport1.text = flight.depAirport
+            tvTime1.text = flight.depTime
+            tvCity2.text = flight.arrCity
+            tvAirport2.text = flight.arrAirport
+            tvTime2.text = flight.arrTime
+        }
+    }
 
     override fun dataIsNotAvailable() {
         with(binding) {
@@ -67,7 +77,7 @@ class InfoActivity : AppCompatActivity(), InfoContract.View {
         }
     }
 
-    fun initNewFlight(): Flight {
+    private fun initNewFlight(): Flight {
         with(binding) {
             return Flight(
                 icao = titleICAO.text.toString(),
@@ -81,7 +91,6 @@ class InfoActivity : AppCompatActivity(), InfoContract.View {
             )
         }
     }
-
 
     override fun onDestroy() {
         super.onDestroy()

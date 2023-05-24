@@ -23,43 +23,33 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:text="AAB812"
+            tools:text="AAB812"
             android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvFlag"
+            android:id="@+id/tvCompany"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="RU"
-            android:textSize="15sp"
-            app:layout_constraintEnd_toStartOf="@+id/tvStatus"
-            app:layout_constraintHorizontal_bias="0.448"
-            app:layout_constraintStart_toEndOf="@+id/tvFlightNumber"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="15dp"
-            android:text="en-route"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintHorizontal_bias="0.398"
+            app:layout_constraintStart_toEndOf="@+id/tvFlightNumber"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Aeroflot" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <TextView
-        android:id="@+id/tvAirport1"
+        android:id="@+id/tvCity1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="5dp"
-        android:text="GLC"
+        tools:text="GLC"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/header" />
@@ -68,31 +58,31 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/ic_baseline_flight_takeoff"
-        app:layout_constraintEnd_toStartOf="@+id/tvAirport2"
-        app:layout_constraintStart_toEndOf="@+id/tvAirport1"
+        app:layout_constraintEnd_toStartOf="@+id/tvCity2"
+        app:layout_constraintStart_toEndOf="@+id/tvCity1"
         app:layout_constraintTop_toBottomOf="@id/header" />
 
     <TextView
-        android:id="@+id/tvAirport2"
+        android:id="@+id/tvCity2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="15dp"
-        android:text="EASD"
+        tools:text="EASD"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/header" />
 
     <TextView
-        android:id="@+id/tvSpeed"
+        android:id="@+id/tvDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:text="800 km/h"
+        tools:text="10.03 - 11.03"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvAirport1" />
+        app:layout_constraintTop_toBottomOf="@id/tvCity1" />
 
 
 

@@ -13,7 +13,20 @@ class InfoPresenter(
     private val dao: FlightDao
 ) : InfoContract.Presenter() {
 
-    override fun downloadDataFromApi(icao: String) {
+    // if flight is already in favorite return true and download from db
+    // else download data from api request
+    override fun checkForFavoriteAndDownload(icao: String): Boolean {
+        val flight = dao.getFlight(icao)
+        return if (flight != null) {
+            view?.setContent(flight)
+            true
+        } else {
+            downloadDataFromApi(icao)
+            false
+        }
+    }
+
+    private fun downloadDataFromApi(icao: String) {
 
         coroutineScope.launch {
             try {

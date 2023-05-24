@@ -33,10 +33,8 @@ class MainFragment : Fragment(), MainContract.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         presenter.attachView(this)
         presenter.downloadDataFromApi()
-
     }
 
      override fun initRecyclerView() {
