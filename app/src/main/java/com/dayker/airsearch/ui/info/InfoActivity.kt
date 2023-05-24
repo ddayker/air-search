@@ -6,7 +6,11 @@ import android.os.Bundle
 import com.dayker.airsearch.database.entity.Flight
 import com.dayker.airsearch.databinding.ActivityInfoBinding
 import com.dayker.airsearch.model.ResponseX
+import com.dayker.airsearch.utils.Constants.ADD_FAVORITE_MESSAGE
+import com.dayker.airsearch.utils.Constants.DELETE_FAVORITE_MESSAGE
+import com.dayker.airsearch.utils.Constants.EMPTY_STRING
 import com.dayker.airsearch.utils.Constants.ICAO_KEY
+import com.google.android.material.snackbar.Snackbar
 import org.koin.android.ext.android.inject
 
 class InfoActivity : AppCompatActivity(), InfoContract.View {
@@ -34,8 +38,10 @@ class InfoActivity : AppCompatActivity(), InfoContract.View {
             favoriteButton.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) {
                     presenter.addToFavorite(initNewFlight())
+                    Snackbar.make(binding.root, ADD_FAVORITE_MESSAGE, Snackbar.LENGTH_SHORT).show()
                 } else {
                     presenter.deleteFromFavorite(titleICAO.text.toString())
+                    Snackbar.make(binding.root, DELETE_FAVORITE_MESSAGE, Snackbar.LENGTH_SHORT).show()
                 }
             }
         }
@@ -72,8 +78,7 @@ class InfoActivity : AppCompatActivity(), InfoContract.View {
 
     override fun dataIsNotAvailable() {
         with(binding) {
-            company.text = "Private Jet"
-            status.text = "information is not available"
+            company.text = EMPTY_STRING
         }
     }
 

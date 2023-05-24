@@ -7,14 +7,13 @@
     android:layout_marginBottom="70dp"
     tools:context=".ui.main.MainFragment">
 
-
-
     <TextView
         android:id="@+id/tvMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginStart="15dp"
+        android:textColor="@color/blue"
         android:text="@string/current_flights"
         android:textSize="20sp" />
 

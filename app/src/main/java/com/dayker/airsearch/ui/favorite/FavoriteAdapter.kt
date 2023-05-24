@@ -24,7 +24,8 @@ class FavoriteAdapter(private val dataSet: List<Flight>) :
                 tvCity1.text = item.depCity
                 tvCity2.text = item.arrCity
                 tvCompany.text = item.company
-                tvDate.text = "${item.depTime} - ${item.arrTime}"
+                arrDate.text = item.arrTime
+                depDate.text = item.depTime
                 tvFlightNumber.text = item.icao
             }
         }

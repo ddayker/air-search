@@ -15,19 +15,21 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:background="@color/teal_700"
+        android:background="@color/blue"
         android:elevation="10dp"
         app:endIconMode="clear_text"
+
         app:layout_constraintEnd_toStartOf="@+id/btnSearch"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:startIconDrawable="@drawable/ic_baseline_search">
+        app:startIconDrawable="@drawable/ic_baseline_flight_takeoff">
 
 
         <com.google.android.material.textfield.TextInputEditText
 
             android:id="@+id/editTextSearch"
             android:layout_width="280dp"
+            android:padding="10dp"
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:backgroundTint="@color/white"
@@ -40,10 +42,10 @@
     <Button
         android:id="@+id/btnSearch"
         android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/teal_200"
+        android:layout_height="66dp"
+
+        android:layout_marginTop="14dp"
+        android:backgroundTint="@color/blue"
         android:drawableTop="@drawable/ic_baseline_search"
         android:elevation="30dp"
         android:padding="13dp"
@@ -61,7 +63,7 @@
         android:elevation="10dp"
         android:padding="5dp"
         android:text="@string/the_flight_with_this_icao_code_is_not_detected"
-        android:textColor="@color/red"
+        android:textColor="@color/blue"
         android:textSize="20sp"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"

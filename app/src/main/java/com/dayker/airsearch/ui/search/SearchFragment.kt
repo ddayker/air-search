@@ -15,6 +15,7 @@ import com.dayker.airsearch.utils.Constants.EMPTY_STRING
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
@@ -82,6 +83,7 @@ class SearchFragment : Fragment(), SearchContract.View {
 
         if (planeMarker == null) {
             val markerOptions = MarkerOptions().position(planePosition).title(rout).snippet(icaoNumber)
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
             planeMarker = googleMap.addMarker(markerOptions)
         } else {
             planeMarker?.position = planePosition

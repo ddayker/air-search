@@ -17,10 +17,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        //set the initial screen
         binding.bottomNavigationView.selectedItemId = R.id.fragmentMain
         setFragment(MainFragment())
-        // set the screen depending on the bottom menu
+
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.fragmentMain -> {

@@ -1,9 +1,6 @@
 package com.dayker.airsearch.ui.search
 
-import android.content.Intent
-import com.dayker.airsearch.base.BasePresenter
 import com.dayker.airsearch.network.ApiService
-import com.dayker.airsearch.ui.info.InfoActivity
 import com.dayker.airsearch.utils.Constants
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

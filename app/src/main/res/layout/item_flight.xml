@@ -6,33 +6,35 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
     android:layout_marginBottom="10dp"
-    android:background="@drawable/bottom_gradien">
+    android:background="@drawable/item_main">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/teal_200"
+        android:background="@color/blue"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:textColor="@color/white"
             android:id="@+id/tvFlightNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:text="AAB812"
+            tools:text="AAB812"
             android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvFlag"
+            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="RU"
+            tools:text="RU"
             android:textSize="15sp"
             app:layout_constraintEnd_toStartOf="@+id/tvStatus"
             app:layout_constraintHorizontal_bias="0.448"
@@ -40,11 +42,12 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:textColor="@color/white"
             android:id="@+id/tvStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="15dp"
-            android:text="en-route"
+            tools:text="en-route"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -58,16 +61,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="5dp"
-        android:text="GLC"
+        android:layout_marginTop="10dp"
+        tools:text="GLC"
+        android:textColor="@color/blue"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/header" />
 
     <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@drawable/ic_baseline_flight_takeoff"
+        android:id="@+id/img"
+        android:layout_marginTop="10dp"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:src="@drawable/plane"
         app:layout_constraintEnd_toStartOf="@+id/tvAirport2"
         app:layout_constraintStart_toEndOf="@+id/tvAirport1"
         app:layout_constraintTop_toBottomOf="@id/header" />
@@ -76,9 +82,10 @@
         android:id="@+id/tvAirport2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="15dp"
-        android:text="EASD"
+        tools:text="EASD"
+        android:textColor="@color/blue"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/header" />
@@ -87,13 +94,14 @@
         android:id="@+id/tvSpeed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="800 km/h"
+        android:layout_marginTop="12dp"
+        android:textColor="@color/white"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.465"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvAirport1" />
-
+        app:layout_constraintTop_toBottomOf="@id/img"
+        tools:text="800 km/h" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
