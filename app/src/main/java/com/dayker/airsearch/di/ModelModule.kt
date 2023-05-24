@@ -15,6 +15,4 @@ val modelModule = module {
     factory<InfoContract.View> { InfoActivity() }
     factory<SearchContract.View> { SearchFragment() }
     factory<FavoriteContract.View> {FavoriteFragment()}
-//    factory<CoinFragmentView> { CoinFragment() }
-//    factory<UserFragmentView> { UserFragment() }
 }

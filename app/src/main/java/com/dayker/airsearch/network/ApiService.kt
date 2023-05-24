@@ -11,7 +11,6 @@ interface ApiService {
     @GET("flights")
     suspend fun getFlights(@Query("api_key") apiKey: String): Flights
 
-
     @GET("flight")
     suspend fun getFlightInfo(
         @Query("flight_icao") icao: String,

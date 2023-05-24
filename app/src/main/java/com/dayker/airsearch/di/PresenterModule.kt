@@ -6,6 +6,8 @@ import com.dayker.airsearch.ui.info.InfoContract
 import com.dayker.airsearch.ui.info.InfoPresenter
 import com.dayker.airsearch.ui.main.MainContract
 import com.dayker.airsearch.ui.main.MainPresenter
+import com.dayker.airsearch.ui.search.SearchContract
+import com.dayker.airsearch.ui.search.SearchPresenter
 import org.koin.dsl.module
 
 val presenterModule = module {
@@ -23,6 +25,11 @@ val presenterModule = module {
     factory<FavoriteContract.Presenter> {
         FavoritePresenter(
             dao = get()
+        )
+    }
+    factory<SearchContract.Presenter> {
+        SearchPresenter(
+            apiService = get()
         )
     }
 }
