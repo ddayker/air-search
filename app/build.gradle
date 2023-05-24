@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 android {
@@ -32,13 +33,14 @@ android {
         jvmTarget = '1.8'
     }
 
-    buildFeatures{
+    buildFeatures {
         viewBinding = true
     }
 }
 
 dependencies {
-
+    // map
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
     implementation platform('com.google.firebase:firebase-bom:32.0.0')
     // dependencies for the Crashlytics and Analytics libraries
     implementation 'com.google.firebase:firebase-crashlytics-ktx'

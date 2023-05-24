@@ -25,6 +25,10 @@ data class ResponseX(
     val depActualTime: String,
     @SerializedName("dep_city")
     val depCity: String,
+    @SerializedName("lat")
+    val lat: Double,
+    @SerializedName("lng")
+    val lng: Double,
     @SerializedName("dep_country")
     val depCountry: String,
     @SerializedName("dep_icao")
