@@ -67,7 +67,6 @@ class SearchFragment : Fragment(), SearchContract.View {
         binding?.notFoundMessage?.visibility = View.VISIBLE
     }
 
-
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
     }
@@ -82,8 +81,9 @@ class SearchFragment : Fragment(), SearchContract.View {
         val planePosition = LatLng(latitude, longitude)
 
         if (planeMarker == null) {
-            val markerOptions = MarkerOptions().position(planePosition).title(rout).snippet(icaoNumber)
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
+            val markerOptions =
+                MarkerOptions().position(planePosition).title(rout).snippet(icaoNumber)
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
             planeMarker = googleMap.addMarker(markerOptions)
         } else {
             planeMarker?.position = planePosition

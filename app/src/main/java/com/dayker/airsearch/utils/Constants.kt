@@ -12,5 +12,5 @@ object Constants {
     const val EVENT_SEARCH = "Search_screen"
     const val EVENT_FAVORITE = "Favorite_screen"
     const val FIREBASE_MESSAGE_KEY = "app_message"
-
+    const val REGION = "ru"
 }

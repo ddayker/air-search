@@ -8,7 +8,7 @@ abstract class BasePresenter<T : BaseView> {
     protected var view: T? = null
     protected val coroutineScope = CoroutineScope(Dispatchers.IO)
 
-   open fun attachView(view: T) {
+    open fun attachView(view: T) {
         this.view = view
     }
 

@@ -1,8 +1,7 @@
 package com.dayker.airsearch.ui.info
 
-import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.dayker.airsearch.database.entity.Flight
 import com.dayker.airsearch.databinding.ActivityInfoBinding
 import com.dayker.airsearch.model.ResponseX
@@ -41,7 +40,8 @@ class InfoActivity : AppCompatActivity(), InfoContract.View {
                     Snackbar.make(binding.root, ADD_FAVORITE_MESSAGE, Snackbar.LENGTH_SHORT).show()
                 } else {
                     presenter.deleteFromFavorite(titleICAO.text.toString())
-                    Snackbar.make(binding.root, DELETE_FAVORITE_MESSAGE, Snackbar.LENGTH_SHORT).show()
+                    Snackbar.make(binding.root, DELETE_FAVORITE_MESSAGE, Snackbar.LENGTH_SHORT)
+                        .show()
                 }
             }
         }

@@ -14,7 +14,7 @@ interface InfoContract {
     }
 
     abstract class Presenter : BasePresenter<View>() {
-        abstract fun addToFavorite(flight : Flight)
+        abstract fun addToFavorite(flight: Flight)
         abstract fun deleteFromFavorite(icao: String)
         abstract fun checkForFavoriteAndDownload(icao: String): Boolean
     }

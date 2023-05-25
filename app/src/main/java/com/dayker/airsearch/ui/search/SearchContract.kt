@@ -14,5 +14,4 @@ interface SearchContract {
     abstract class Presenter : BasePresenter<View>() {
         abstract fun findFlight(icao: String)
     }
-
 }

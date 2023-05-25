@@ -4,8 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.dayker.airsearch.databinding.ItemFlightBinding
 import com.dayker.airsearch.model.Response
@@ -39,17 +37,14 @@ class MainAdapter(private val dataSet: List<Response>) :
         return ViewHolder(binding)
     }
 
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(dataSet[position])
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, InfoActivity::class.java)
             intent.putExtra(ICAO_KEY, dataSet[position].flightIcao)
             holder.itemView.context.startActivity(intent)
-
         }
     }
 
     override fun getItemCount() = dataSet.size
-
 }

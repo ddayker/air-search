@@ -1,18 +1,13 @@
 package com.dayker.airsearch.ui.favorite
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dayker.airsearch.R
 import com.dayker.airsearch.database.entity.Flight
 import com.dayker.airsearch.databinding.FragmentFavoriteBinding
-import com.dayker.airsearch.databinding.FragmentMainBinding
-import com.dayker.airsearch.model.Response
-import com.dayker.airsearch.ui.main.MainAdapter
-import com.dayker.airsearch.ui.main.MainContract
 import org.koin.android.ext.android.inject
 
 class FavoriteFragment : Fragment(), FavoriteContract.View {
@@ -28,8 +23,8 @@ class FavoriteFragment : Fragment(), FavoriteContract.View {
         return binding?.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onResume() {
+        super.onResume()
         presenter.attachView(this)
         presenter.downloadDataFromDB()
     }
@@ -49,5 +44,4 @@ class FavoriteFragment : Fragment(), FavoriteContract.View {
         super.onDestroyView()
         presenter.detachView()
     }
-
 }

@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.dayker.airsearch.database.entity.Flight
 import com.dayker.airsearch.databinding.ItemFavoriteBinding
-import com.dayker.airsearch.databinding.ItemFlightBinding
 import com.dayker.airsearch.ui.info.InfoActivity
 import com.dayker.airsearch.utils.Constants
 
@@ -37,7 +36,6 @@ class FavoriteAdapter(private val dataSet: List<Flight>) :
         return ViewHolder(binding)
     }
 
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(dataSet[position])
         holder.itemView.setOnClickListener {
@@ -48,5 +46,4 @@ class FavoriteAdapter(private val dataSet: List<Flight>) :
     }
 
     override fun getItemCount() = dataSet.size
-
 }

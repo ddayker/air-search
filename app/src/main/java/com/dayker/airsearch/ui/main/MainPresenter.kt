@@ -2,6 +2,7 @@ package com.dayker.airsearch.ui.main
 
 import com.dayker.airsearch.network.ApiService
 import com.dayker.airsearch.utils.Constants
+import com.dayker.airsearch.utils.Constants.REGION
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 import kotlinx.coroutines.Dispatchers
@@ -18,7 +19,8 @@ class MainPresenter(
             try {
                 val response =
                     apiService.getFlights(
-                        Constants.API_KEY
+                        Constants.API_KEY,
+                        REGION
                     )
                 withContext(Dispatchers.Main) {
                     view?.setContent(response.response)
@@ -41,6 +43,4 @@ class MainPresenter(
                 }
             }
     }
-
-
 }
