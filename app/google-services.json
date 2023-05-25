@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1063543193244",
+    "project_id": "airsearch-91ae4",
+    "storage_bucket": "airsearch-91ae4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1063543193244:android:489f18fe042b4e61a0b759",
+        "android_client_info": {
+          "package_name": "com.dayker.airsearch"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1063543193244-abh4sg08vh9laaoqppterv84jejc9fba.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyNPwAOYDtxR7Ohy7M2XY3n23z64Qs4R4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1063543193244-abh4sg08vh9laaoqppterv84jejc9fba.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -6,16 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dayker.airsearch.R
 import com.dayker.airsearch.databinding.FragmentMainBinding
 import com.dayker.airsearch.model.Response
-import com.dayker.airsearch.network.ApiService
-import com.dayker.airsearch.utils.ApiUtils.retrofitInit
-import com.dayker.airsearch.utils.Constants.API_KEY
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import com.dayker.airsearch.utils.Constants.FIREBASE_MESSAGE_KEY
 import org.koin.android.ext.android.inject
 
 class MainFragment : Fragment(), MainContract.View {
@@ -35,16 +28,23 @@ class MainFragment : Fragment(), MainContract.View {
         super.onViewCreated(view, savedInstanceState)
         presenter.attachView(this)
         presenter.downloadDataFromApi()
+        binding?.tvMain?.setOnClickListener {
+            presenter.getRemoteMessage(FIREBASE_MESSAGE_KEY)
+        }
     }
 
-     override fun initRecyclerView() {
-         val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-         binding?.rv?.layoutManager = layoutManager
-     }
+    override fun initRecyclerView() {
+        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        binding?.rv?.layoutManager = layoutManager
+    }
 
-     override fun setContent(flights: List<Response>) {
+    override fun setContent(flights: List<Response>) {
         val adapter = MainAdapter(flights)
         binding?.rv?.adapter = adapter
+    }
+
+    override fun setRemoteText(text: String) {
+        binding?.tvMain?.text = text
     }
 
     override fun onDestroyView() {

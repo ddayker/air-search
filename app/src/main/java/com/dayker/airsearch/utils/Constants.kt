@@ -1,9 +1,5 @@
 package com.dayker.airsearch.utils
 
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-
 object Constants {
 
     const val BASE_URL = "https://airlabs.co/api/v9/"
@@ -12,5 +8,9 @@ object Constants {
     const val EMPTY_STRING = ""
     const val ADD_FAVORITE_MESSAGE = "Flight added to favorites"
     const val DELETE_FAVORITE_MESSAGE = "Flight removed from favorites"
+    const val EVENT_MAIN = "Main_screen"
+    const val EVENT_SEARCH = "Search_screen"
+    const val EVENT_FAVORITE = "Favorite_screen"
+    const val FIREBASE_MESSAGE_KEY = "app_message"
 
 }
