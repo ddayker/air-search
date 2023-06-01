@@ -14,6 +14,7 @@ class FavoriteFragment : Fragment(), FavoriteContract.View {
 
     private val presenter: FavoriteContract.Presenter by inject()
     private var binding: FragmentFavoriteBinding? = null
+    private var adapter: FavoriteAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,9 +36,12 @@ class FavoriteFragment : Fragment(), FavoriteContract.View {
     }
 
     override fun setContent(flights: List<Flight>) {
-        val adapter = FavoriteAdapter(flights)
-        binding?.rv?.adapter = adapter
-        println(flights)
+        if (adapter == null) {
+            adapter = FavoriteAdapter(flights)
+            binding?.rv?.adapter = adapter
+        } else {
+            adapter?.updateData(flights)
+        }
     }
 
     override fun onDestroyView() {

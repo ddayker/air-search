@@ -3,7 +3,7 @@ package com.dayker.airsearch.model
 
 import com.google.gson.annotations.SerializedName
 
-data class Response(
+data class ActualFlight(
     @SerializedName("aircraft_icao")
     val aircraftIcao: String,
     @SerializedName("airline_icao")

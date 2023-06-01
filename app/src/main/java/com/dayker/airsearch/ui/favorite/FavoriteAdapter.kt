@@ -4,13 +4,15 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.dayker.airsearch.database.entity.Flight
 import com.dayker.airsearch.databinding.ItemFavoriteBinding
+import com.dayker.airsearch.ui.DiffCallback
 import com.dayker.airsearch.ui.info.InfoActivity
 import com.dayker.airsearch.utils.Constants
 
-class FavoriteAdapter(private val dataSet: List<Flight>) :
+class FavoriteAdapter(private var dataSet: List<Flight>) :
     RecyclerView.Adapter<FavoriteAdapter.ViewHolder>() {
 
     class ViewHolder(
@@ -28,6 +30,23 @@ class FavoriteAdapter(private val dataSet: List<Flight>) :
                 tvFlightNumber.text = item.icao
             }
         }
+    }
+
+    fun updateData(newData: List<Flight>) {
+        val diffResult = DiffUtil.calculateDiff(
+            DiffCallback(
+                oldData = dataSet,
+                newData = newData,
+                areItemsTheSame = { oldItem, newItem ->
+                    oldItem.icao == newItem.icao
+                },
+                areContentsTheSame = { oldItem, newItem ->
+                    oldItem == newItem
+                }
+            )
+        )
+        dataSet = newData
+        diffResult.dispatchUpdatesTo(this)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

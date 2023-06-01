@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dayker.airsearch.databinding.FragmentMainBinding
-import com.dayker.airsearch.model.Response
+import com.dayker.airsearch.model.ActualFlight
 import com.dayker.airsearch.utils.Constants.FIREBASE_MESSAGE_KEY
 import org.koin.android.ext.android.inject
 
@@ -15,6 +15,7 @@ class MainFragment : Fragment(), MainContract.View {
 
     private var binding: FragmentMainBinding? = null
     private val presenter: MainContract.Presenter by inject()
+    private var adapter: MainAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,9 +39,13 @@ class MainFragment : Fragment(), MainContract.View {
         binding?.rv?.layoutManager = layoutManager
     }
 
-    override fun setContent(flights: List<Response>) {
-        val adapter = MainAdapter(flights)
-        binding?.rv?.adapter = adapter
+    override fun setContent(flights: List<ActualFlight>) {
+        if (adapter == null) {
+            adapter = MainAdapter(flights)
+            binding?.rv?.adapter = adapter
+        } else {
+            adapter?.updateData(flights)
+        }
     }
 
     override fun setRemoteText(text: String) {

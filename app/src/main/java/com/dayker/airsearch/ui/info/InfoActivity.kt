@@ -2,12 +2,10 @@ package com.dayker.airsearch.ui.info
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.dayker.airsearch.R
 import com.dayker.airsearch.database.entity.Flight
 import com.dayker.airsearch.databinding.ActivityInfoBinding
-import com.dayker.airsearch.model.ResponseX
-import com.dayker.airsearch.utils.Constants.ADD_FAVORITE_MESSAGE
-import com.dayker.airsearch.utils.Constants.DELETE_FAVORITE_MESSAGE
-import com.dayker.airsearch.utils.Constants.EMPTY_STRING
+import com.dayker.airsearch.model.FlightInfo
 import com.dayker.airsearch.utils.Constants.ICAO_KEY
 import com.google.android.material.snackbar.Snackbar
 import org.koin.android.ext.android.inject
@@ -37,17 +35,25 @@ class InfoActivity : AppCompatActivity(), InfoContract.View {
             favoriteButton.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) {
                     presenter.addToFavorite(initNewFlight())
-                    Snackbar.make(binding.root, ADD_FAVORITE_MESSAGE, Snackbar.LENGTH_SHORT).show()
+                    Snackbar.make(
+                        binding.root,
+                        R.string.add_favorite_message,
+                        Snackbar.LENGTH_SHORT
+                    ).show()
                 } else {
                     presenter.deleteFromFavorite(titleICAO.text.toString())
-                    Snackbar.make(binding.root, DELETE_FAVORITE_MESSAGE, Snackbar.LENGTH_SHORT)
+                    Snackbar.make(
+                        binding.root,
+                        R.string.delete_favorite_message,
+                        Snackbar.LENGTH_SHORT
+                    )
                         .show()
                 }
             }
         }
     }
 
-    override fun setContent(flight: ResponseX) {
+    override fun setContent(flight: FlightInfo) {
         with(binding) {
             titleICAO.text = flight.flightIcao
             company.text = flight.airlineName
@@ -78,7 +84,7 @@ class InfoActivity : AppCompatActivity(), InfoContract.View {
 
     override fun dataIsNotAvailable() {
         with(binding) {
-            company.text = EMPTY_STRING
+            company.text = R.string.empty_string.toString()
         }
     }
 

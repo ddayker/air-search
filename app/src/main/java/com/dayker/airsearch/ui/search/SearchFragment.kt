@@ -8,10 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.dayker.airsearch.R
 import com.dayker.airsearch.databinding.FragmentSearchBinding
-import com.dayker.airsearch.model.ResponseX
+import com.dayker.airsearch.model.FlightInfo
 import com.dayker.airsearch.ui.info.InfoActivity
 import com.dayker.airsearch.utils.Constants
-import com.dayker.airsearch.utils.Constants.EMPTY_STRING
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
@@ -27,7 +26,7 @@ class SearchFragment : Fragment(), SearchContract.View {
     private val presenter: SearchContract.Presenter by inject()
     private lateinit var googleMap: GoogleMap
     private var planeMarker: Marker? = null
-    private var icaoNumber = EMPTY_STRING
+    private var icaoNumber = R.string.empty_string.toString()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -71,7 +70,7 @@ class SearchFragment : Fragment(), SearchContract.View {
         super.onSaveInstanceState(outState)
     }
 
-    override fun showFlightInfo(flight: ResponseX) {
+    override fun showFlightInfo(flight: FlightInfo) {
         binding?.notFoundMessage?.visibility = View.GONE
         val latitude = flight.lat
         val longitude = flight.lng

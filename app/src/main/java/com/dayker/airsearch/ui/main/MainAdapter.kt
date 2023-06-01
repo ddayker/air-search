@@ -4,14 +4,16 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.dayker.airsearch.databinding.ItemFlightBinding
-import com.dayker.airsearch.model.Response
+import com.dayker.airsearch.model.ActualFlight
+import com.dayker.airsearch.ui.DiffCallback
 import com.dayker.airsearch.ui.info.InfoActivity
 import com.dayker.airsearch.utils.Constants.ICAO_KEY
 
 
-class MainAdapter(private val dataSet: List<Response>) :
+class MainAdapter(private var dataSet: List<ActualFlight>) :
     RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
     class ViewHolder(
@@ -19,7 +21,7 @@ class MainAdapter(private val dataSet: List<Response>) :
     ) : RecyclerView.ViewHolder(binding.root) {
 
         @SuppressLint("SetTextI18n")
-        fun bind(item: Response) {
+        fun bind(item: ActualFlight) {
             with(binding) {
                 tvAirport1.text = item.depIcao
                 tvAirport2.text = item.arrIcao
@@ -29,6 +31,23 @@ class MainAdapter(private val dataSet: List<Response>) :
                 tvFlightNumber.text = item.flightIcao
             }
         }
+    }
+
+    fun updateData(newData: List<ActualFlight>) {
+        val diffResult = DiffUtil.calculateDiff(
+            DiffCallback(
+                oldData = dataSet,
+                newData = newData,
+                areItemsTheSame = { oldItem, newItem ->
+                    oldItem.flightIcao == newItem.flightIcao
+                },
+                areContentsTheSame = { oldItem, newItem ->
+                    oldItem == newItem
+                }
+            )
+        )
+        dataSet = newData
+        diffResult.dispatchUpdatesTo(this)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
