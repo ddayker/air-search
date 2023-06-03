@@ -20,9 +20,11 @@
     <string name="departure_">Departure:</string>
     <string name="favorite_flights">Favorite flights:</string>
     <string name="search_by_icao_code">Search by icao code</string>
-    <string name="the_flight_with_this_icao_code_is_not_detected">The flight with this icao code is not detected.</string>
+    <string name="is_not_detected">The flight with this icao code is not detected</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="add_favorite_message">Flight added to favorites</string>
     <string name="delete_favorite_message">Flight removed from favorites</string>
     <string name="empty_string" />
+    <string name="no_internet_connection">No internet connection</string>
+    <string name="reconnect">Reconnect</string>
 </resources>

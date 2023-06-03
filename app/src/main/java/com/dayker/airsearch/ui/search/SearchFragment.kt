@@ -10,6 +10,7 @@ import com.dayker.airsearch.R
 import com.dayker.airsearch.databinding.FragmentSearchBinding
 import com.dayker.airsearch.model.FlightInfo
 import com.dayker.airsearch.ui.info.InfoActivity
+import com.dayker.airsearch.utils.ApiUtils.isConnectionError
 import com.dayker.airsearch.utils.Constants
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -41,33 +42,40 @@ class SearchFragment : Fragment(), SearchContract.View {
         presenter.attachView(this)
 
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
-        mapFragment?.getMapAsync { map ->
-            googleMap = map
-            setupMap()
-        }
-
+        initMap(mapFragment)
         binding?.btnSearch?.setOnClickListener {
-            val icaoCode = binding?.editTextSearch?.text.toString()
-            presenter.findFlight(icao = icaoCode)
-
-            mapFragment?.getMapAsync { map ->
-                googleMap = map
-                setupMap()
+            if (isConnectionError(requireContext())) {
+                showConnectionError()
+            } else {
+                searchFlight(mapFragment)
             }
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        presenter.detachView()
-    }
-
     override fun showFlightNotFound() {
+        binding?.notFoundMessage?.text = getString(R.string.is_not_detected)
         binding?.notFoundMessage?.visibility = View.VISIBLE
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
+    private fun showConnectionError() {
+        binding?.notFoundMessage?.text = getString(R.string.no_internet_connection)
+        binding?.notFoundMessage?.visibility = View.VISIBLE
+    }
+
+    private fun initMap(mapFragment: SupportMapFragment?) {
+        mapFragment?.getMapAsync { map ->
+            googleMap = map
+            setupMap()
+        }
+    }
+
+    private fun searchFlight(mapFragment: SupportMapFragment?) {
+        val icaoCode = binding?.editTextSearch?.text.toString()
+        presenter.findFlight(icao = icaoCode)
+        mapFragment?.getMapAsync { map ->
+            googleMap = map
+            setupMap()
+        }
     }
 
     override fun showFlightInfo(flight: FlightInfo) {
@@ -87,7 +95,6 @@ class SearchFragment : Fragment(), SearchContract.View {
         } else {
             planeMarker?.position = planePosition
         }
-
         googleMap.animateCamera(CameraUpdateFactory.newLatLng(planePosition))
     }
 
@@ -102,11 +109,16 @@ class SearchFragment : Fragment(), SearchContract.View {
             true
         }
 
-        googleMap.setOnInfoWindowClickListener { marker ->
+        googleMap.setOnInfoWindowClickListener {
             val intent = Intent(requireContext(), InfoActivity::class.java)
             intent.putExtra(Constants.ICAO_KEY, icaoNumber)
             startActivity(intent)
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.detachView()
     }
 }
 

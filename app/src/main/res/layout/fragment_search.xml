@@ -62,7 +62,7 @@
         android:background="@color/white"
         android:elevation="10dp"
         android:padding="5dp"
-        android:text="@string/the_flight_with_this_icao_code_is_not_detected"
+        android:text="@string/is_not_detected"
         android:textColor="@color/blue"
         android:textSize="20sp"
         android:visibility="gone"
