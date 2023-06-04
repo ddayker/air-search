@@ -15,7 +15,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -52,13 +51,26 @@
                     app:layout_constraintStart_toEndOf="@+id/backButton"
                     app:layout_constraintTop_toTopOf="parent" />
 
+
+                <ImageButton
+                    android:id="@+id/showOnMapButton"
+                    android:layout_width="46dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_baseline_location_searching"
+                    app:layout_constraintStart_toEndOf="@+id/titleICAO"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription" />
+
                 <CheckBox
-                    android:button="@drawable/selector_like"
                     android:id="@+id/favoriteButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="5dp"
+                    android:button="@drawable/selector_like"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -112,18 +124,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/status">
-
-            <!--            <TextView-->
-            <!--                android:id="@+id/tvDeparture"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_marginStart="20dp"-->
-            <!--                android:layout_marginEnd="20dp"-->
-            <!--                android:text="@string/departure_"-->
-            <!--                android:textColor="@color/blue"-->
-            <!--                android:textSize="20sp">-->
-
-            <!--            </TextView>-->
 
             <TextView
                 android:id="@+id/tvCity1"
@@ -191,19 +191,6 @@
 
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/imageView">
-
-            <!--            <TextView-->
-            <!--                android:id="@+id/tvArrival"-->
-            <!--                android:textColor="@color/blue"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_marginStart="20dp"-->
-            <!--                android:layout_marginEnd="20dp"-->
-            <!--                android:gravity="end"-->
-            <!--                android:text="Arrival:"-->
-            <!--                android:textSize="20sp">-->
-
-            <!--            </TextView>-->
 
             <TextView
                 android:id="@+id/tvCity2"

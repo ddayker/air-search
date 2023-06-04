@@ -11,6 +11,7 @@ import com.dayker.airsearch.ui.search.SearchFragment
 import com.dayker.airsearch.utils.Constants.EVENT_FAVORITE
 import com.dayker.airsearch.utils.Constants.EVENT_MAIN
 import com.dayker.airsearch.utils.Constants.EVENT_SEARCH
+import com.dayker.airsearch.utils.Constants.SHOW_ON_MAP_KEY
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.ktx.Firebase
@@ -24,8 +25,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.bottomNavigationView.selectedItemId = R.id.fragmentMain
-        setFragment(MainFragment())
+
+        val showMap = intent.getBooleanExtra(SHOW_ON_MAP_KEY, false)
+        if (showMap) {
+            binding.bottomNavigationView.selectedItemId = R.id.fragmentSearch
+            setFragment(SearchFragment())
+        } else {
+            binding.bottomNavigationView.selectedItemId = R.id.fragmentMain
+            setFragment(MainFragment())
+        }
         analytics = Firebase.analytics
         val bundle = Bundle()
 

@@ -22,12 +22,14 @@ import com.google.android.gms.maps.model.MarkerOptions
 import org.koin.android.ext.android.inject
 
 class SearchFragment : Fragment(), SearchContract.View {
+    companion object {
+        var searchIcao: String = ""
+    }
 
     private var binding: FragmentSearchBinding? = null
     private val presenter: SearchContract.Presenter by inject()
     private lateinit var googleMap: GoogleMap
     private var planeMarker: Marker? = null
-    private var icaoNumber = R.string.empty_string.toString()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,14 +42,20 @@ class SearchFragment : Fragment(), SearchContract.View {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter.attachView(this)
-
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         initMap(mapFragment)
+
+        if (searchIcao.isNotEmpty()) {
+            binding?.editTextSearch?.setText(searchIcao)
+            searchFlight(mapFragment, searchIcao)
+        }
+
         binding?.btnSearch?.setOnClickListener {
             if (isConnectionError(requireContext())) {
                 showConnectionError()
             } else {
-                searchFlight(mapFragment)
+                searchIcao = binding?.editTextSearch?.text.toString()
+                searchFlight(mapFragment, searchIcao)
             }
         }
     }
@@ -55,11 +63,17 @@ class SearchFragment : Fragment(), SearchContract.View {
     override fun showFlightNotFound() {
         binding?.notFoundMessage?.text = getString(R.string.is_not_detected)
         binding?.notFoundMessage?.visibility = View.VISIBLE
+        if (planeMarker != null) {
+            planeMarker?.remove()
+        }
     }
 
     private fun showConnectionError() {
         binding?.notFoundMessage?.text = getString(R.string.no_internet_connection)
         binding?.notFoundMessage?.visibility = View.VISIBLE
+        if (planeMarker != null) {
+            planeMarker?.remove()
+        }
     }
 
     private fun initMap(mapFragment: SupportMapFragment?) {
@@ -69,9 +83,8 @@ class SearchFragment : Fragment(), SearchContract.View {
         }
     }
 
-    private fun searchFlight(mapFragment: SupportMapFragment?) {
-        val icaoCode = binding?.editTextSearch?.text.toString()
-        presenter.findFlight(icao = icaoCode)
+    private fun searchFlight(mapFragment: SupportMapFragment?, icao: String) {
+        presenter.findFlight(icao)
         mapFragment?.getMapAsync { map ->
             googleMap = map
             setupMap()
@@ -83,35 +96,31 @@ class SearchFragment : Fragment(), SearchContract.View {
         val latitude = flight.lat
         val longitude = flight.lng
         val rout = "${flight.depCity} - ${flight.arrCity}"
-        icaoNumber = flight.flightIcao
-
+        searchIcao = flight.flightIcao
         val planePosition = LatLng(latitude, longitude)
-
-        if (planeMarker == null) {
-            val markerOptions =
-                MarkerOptions().position(planePosition).title(rout).snippet(icaoNumber)
-                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
-            planeMarker = googleMap.addMarker(markerOptions)
-        } else {
-            planeMarker?.position = planePosition
+        if (planeMarker != null) {
+            planeMarker?.remove()
         }
+        addMarkerToMap(planePosition, rout, searchIcao)
         googleMap.animateCamera(CameraUpdateFactory.newLatLng(planePosition))
     }
 
-    private fun setupMap() {
+    private fun addMarkerToMap(position: LatLng, title: String, snippet: String) {
+        val markerOptions = MarkerOptions().position(position).title(title).snippet(snippet)
+            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
+        planeMarker = googleMap.addMarker(markerOptions)
+    }
 
+    private fun setupMap() {
         val markerInfoWindowAdapter = MapWindowAdapter(requireContext())
         googleMap.setInfoWindowAdapter(markerInfoWindowAdapter)
-
-
         googleMap.setOnMarkerClickListener { marker ->
             marker.showInfoWindow()
             true
         }
-
         googleMap.setOnInfoWindowClickListener {
             val intent = Intent(requireContext(), InfoActivity::class.java)
-            intent.putExtra(Constants.ICAO_KEY, icaoNumber)
+            intent.putExtra(Constants.ICAO_KEY, searchIcao)
             startActivity(intent)
         }
     }

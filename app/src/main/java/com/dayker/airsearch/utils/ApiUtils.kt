@@ -13,21 +13,11 @@ object ApiUtils {
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .build()
 
-
     fun isConnectionError(context: Context): Boolean {
         val connectivityManager =
             context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork) ?: return true
         return false
     }
-
-//    fun isConnectedToNetwork(context: Context): Boolean {
-//        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as? ConnectivityManager
-//        val network = connectivityManager?.activeNetwork
-//        val networkCapabilities = connectivityManager?.getNetworkCapabilities(network)
-//
-//        return networkCapabilities?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) == true
-//    }
-
 }
 

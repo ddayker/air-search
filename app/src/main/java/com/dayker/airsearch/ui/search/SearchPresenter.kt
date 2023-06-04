@@ -19,10 +19,12 @@ class SearchPresenter(
                     )
                 withContext(Dispatchers.Main) {
                     view?.showFlightInfo(response.response)
+                    SearchFragment.searchIcao = icao
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
                     view?.showFlightNotFound()
+                    SearchFragment.searchIcao = ""
                 }
             }
         }

@@ -1,12 +1,16 @@
 package com.dayker.airsearch.ui.info
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.dayker.airsearch.R
 import com.dayker.airsearch.database.entity.Flight
 import com.dayker.airsearch.databinding.ActivityInfoBinding
 import com.dayker.airsearch.model.FlightInfo
+import com.dayker.airsearch.ui.MainActivity
+import com.dayker.airsearch.ui.search.SearchFragment
 import com.dayker.airsearch.utils.Constants.ICAO_KEY
+import com.dayker.airsearch.utils.Constants.SHOW_ON_MAP_KEY
 import com.google.android.material.snackbar.Snackbar
 import org.koin.android.ext.android.inject
 
@@ -32,22 +36,18 @@ class InfoActivity : AppCompatActivity(), InfoContract.View {
             backButton.setOnClickListener {
                 finish()
             }
+            showOnMapButton.setOnClickListener {
+                if (icao != null) {
+                    showFlightOnMap(icao)
+                }
+            }
             favoriteButton.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) {
                     presenter.addToFavorite(initNewFlight())
-                    Snackbar.make(
-                        binding.root,
-                        R.string.add_favorite_message,
-                        Snackbar.LENGTH_SHORT
-                    ).show()
+                    makeSnackbar(getString(R.string.add_favorite_message))
                 } else {
                     presenter.deleteFromFavorite(titleICAO.text.toString())
-                    Snackbar.make(
-                        binding.root,
-                        R.string.delete_favorite_message,
-                        Snackbar.LENGTH_SHORT
-                    )
-                        .show()
+                    makeSnackbar(getString(R.string.delete_favorite_message))
                 }
             }
         }
@@ -84,7 +84,7 @@ class InfoActivity : AppCompatActivity(), InfoContract.View {
 
     override fun dataIsNotAvailable() {
         with(binding) {
-            company.text = R.string.empty_string.toString()
+            company.text = R.string.data_is_not_available.toString()
         }
     }
 
@@ -101,6 +101,21 @@ class InfoActivity : AppCompatActivity(), InfoContract.View {
                 arrTime = tvTime2.text.toString()
             )
         }
+    }
+
+    private fun showFlightOnMap(icao: String) {
+        SearchFragment.searchIcao = icao
+        val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra(SHOW_ON_MAP_KEY, true)
+        startActivity(intent)
+    }
+
+    private fun makeSnackbar(message: String) {
+        Snackbar.make(
+            binding.root,
+            message,
+            Snackbar.LENGTH_SHORT
+        ).show()
     }
 
     override fun onDestroy() {
