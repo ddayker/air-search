@@ -51,18 +51,23 @@ class SearchFragment : Fragment(), SearchContract.View {
         }
 
         binding?.btnSearch?.setOnClickListener {
-            if (isConnectionError(requireContext())) {
-                showConnectionError()
-            } else {
-                searchIcao = binding?.editTextSearch?.text.toString()
-                searchFlight(mapFragment, searchIcao)
+            searchIcao = binding?.editTextSearch?.text.toString()
+            if (searchIcao.isNotEmpty()) {
+                if (isConnectionError(requireContext())) {
+                    showConnectionError()
+                } else {
+                    searchFlight(mapFragment, searchIcao)
+                }
             }
+        }
+        binding?.btnMessageClose?.setOnClickListener {
+            binding?.notFoundMessageLayout?.visibility = View.GONE
         }
     }
 
     override fun showFlightNotFound() {
         binding?.notFoundMessage?.text = getString(R.string.is_not_detected)
-        binding?.notFoundMessage?.visibility = View.VISIBLE
+        binding?.notFoundMessageLayout?.visibility = View.VISIBLE
         if (planeMarker != null) {
             planeMarker?.remove()
         }
@@ -70,7 +75,7 @@ class SearchFragment : Fragment(), SearchContract.View {
 
     private fun showConnectionError() {
         binding?.notFoundMessage?.text = getString(R.string.no_internet_connection)
-        binding?.notFoundMessage?.visibility = View.VISIBLE
+        binding?.notFoundMessageLayout?.visibility = View.VISIBLE
         if (planeMarker != null) {
             planeMarker?.remove()
         }
@@ -92,7 +97,7 @@ class SearchFragment : Fragment(), SearchContract.View {
     }
 
     override fun showFlightInfo(flight: FlightInfo) {
-        binding?.notFoundMessage?.visibility = View.GONE
+        binding?.notFoundMessageLayout?.visibility = View.GONE
         val latitude = flight.lat
         val longitude = flight.lng
         val rout = "${flight.depCity} - ${flight.arrCity}"

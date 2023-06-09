@@ -4,8 +4,10 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.dayker.airsearch.R
 import com.dayker.airsearch.databinding.ItemFlightBinding
 import com.dayker.airsearch.model.ActualFlight
 import com.dayker.airsearch.ui.DiffCallback
@@ -58,6 +60,9 @@ class MainAdapter(private var dataSet: List<ActualFlight>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(dataSet[position])
+        val animation =
+            AnimationUtils.loadAnimation(holder.itemView.context, R.anim.download_animation)
+        holder.itemView.startAnimation(animation)
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, InfoActivity::class.java)
             intent.putExtra(ICAO_KEY, dataSet[position].flightIcao)

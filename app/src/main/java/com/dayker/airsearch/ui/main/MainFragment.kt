@@ -70,13 +70,12 @@ class MainFragment : Fragment(), MainContract.View {
     }
 
     private fun showConnectionError() {
-        binding?.tvMain?.visibility = View.INVISIBLE
         binding?.rv?.visibility = View.GONE
         binding?.tvNoConnection?.visibility = View.VISIBLE
         binding?.ivNoConnection?.visibility = View.VISIBLE
         Handler(Looper.getMainLooper()).postDelayed({
             binding?.btnReconnect?.visibility = View.VISIBLE
-        }, 3000)
+        }, 2000)
     }
 
     private fun refreshFragment() {

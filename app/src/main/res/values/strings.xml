@@ -13,18 +13,22 @@
     <string name="favorites">Favorites</string>
     <string name="search">Search</string>
     <string name="all">All</string>
-    <string name="urrent_flights">Сurrent flights</string>
-    <string name="current_flights">Current flights:</string>
+    <string name="current_flights">REAL-TIME FLIGHTS</string>
     <string name="icao">ICAO</string>
     <string name="departure">Departure:</string>
     <string name="departure_">Departure:</string>
     <string name="favorite_flights">Favorite flights:</string>
     <string name="search_by_icao_code">Search by icao code</string>
-    <string name="is_not_detected">The flight with this icao code is not detected</string>
+    <string name="is_not_detected">The flight with this icao code is not detected.</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="add_favorite_message">Flight added to favorites</string>
     <string name="delete_favorite_message">Flight removed from favorites</string>
-    <string name="no_internet_connection">No internet connection</string>
+    <string name="no_internet_connection">No internet connection.</string>
     <string name="reconnect">Reconnect</string>
     <string name="data_is_not_available">No data</string>
+    <string name="your_flights">YOUR FLIGHTS</string>
+    <string name="your_region">Your region</string>
+    <string name="show_on_the_map">Show on the map</string>
+    <string name="departure_text">Departure:</string>
+    <string name="arrival">Arrival:</string>
 </resources>

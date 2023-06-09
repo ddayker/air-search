@@ -19,7 +19,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/blue"
+            android:background="@color/darkblue"
             app:popupTheme="@style/Theme.AirSearch.PopupOverlay">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -53,11 +53,10 @@
 
 
                 <ImageButton
-                    android:id="@+id/showOnMapButton"
+                    android:id="@+id/imgBtnShowOnMap"
                     android:layout_width="46dp"
                     android:layout_height="48dp"
                     android:layout_marginTop="8dp"
-
                     android:background="?android:attr/selectableItemBackgroundBorderless"
                     android:src="@drawable/ic_baseline_location_searching"
                     app:layout_constraintStart_toEndOf="@+id/titleICAO"
@@ -71,6 +70,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="5dp"
                     android:button="@drawable/selector_like"
+                    android:buttonTint="@android:color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -81,7 +81,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="600dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
@@ -96,11 +96,23 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:textColor="@color/white"
-            android:textSize="30sp"
+            android:textSize="23sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="AEROFLOT" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/sigmal"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginEnd="2dp"
+            app:layout_constraintEnd_toStartOf="@+id/company"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/signal" />
 
         <TextView
             android:id="@+id/status"
@@ -108,7 +120,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/company"
@@ -126,6 +138,19 @@
             app:layout_constraintTop_toBottomOf="@+id/status">
 
             <TextView
+                android:id="@+id/tvDepartute"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:text="@string/departure_text"
+                android:textColor="@color/white"
+                android:textSize="18sp">
+
+            </TextView>
+
+            <TextView
                 android:id="@+id/tvCity1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -133,7 +158,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp"
                 android:textColor="@color/white"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 tools:text="Minsk">
 
             </TextView>
@@ -143,9 +168,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="2dp"
                 android:textColor="@color/white"
-                android:textSize="24sp"
-                tools:text="AEROPORT">
+                android:textSize="16sp"
+                tools:text="Aeroport Workd">
 
             </TextView>
 
@@ -154,8 +180,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="2dp"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 tools:text="10:10:10 ">
 
             </TextView>
@@ -165,8 +192,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="2dp"
                 android:textColor="@color/red"
-                android:textSize="20sp"
+                android:textSize="13sp"
                 tools:text="10:10:10 ">
 
             </TextView>
@@ -174,23 +202,48 @@
 
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:rotation="90"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/llDeparture"
-            app:srcCompat="@drawable/bag_travel_flight_plane_airplane_icon"
-            tools:ignore="ContentDescription" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/animation"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/llDeparture">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottie"
+                android:layout_width="500dp"
+                android:layout_height="235dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/flight" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:layout_marginTop="10dp"
             android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@+id/imageView">
+            app:layout_constraintTop_toBottomOf="@+id/animation">
+
+            <TextView
+                android:id="@+id/tvArrival"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:text="@string/arrival"
+                android:textColor="@color/white"
+                android:textSize="18sp">
+
+            </TextView>
 
             <TextView
                 android:id="@+id/tvCity2"
@@ -199,9 +252,8 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp"
-                android:gravity="end"
-                android:textColor="@color/sky"
-                android:textSize="24sp"
+                android:textColor="@color/white"
+                android:textSize="20sp"
                 tools:text="Minsk">
 
             </TextView>
@@ -210,24 +262,22 @@
                 android:id="@+id/tvAirport2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
-                android:gravity="end"
-                android:textColor="@color/sky"
-                android:textSize="24sp"
-                tools:text="AEROPORT">
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                tools:text="Aeroport Workd">
 
             </TextView>
-
 
             <TextView
                 android:id="@+id/tvTime2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:gravity="end"
-                android:textColor="@color/sky"
-                android:textSize="20sp"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/white"
+                android:textSize="16sp"
                 tools:text="10:10:10 ">
 
             </TextView>
@@ -237,16 +287,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:gravity="end"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="30dp"
                 android:textColor="@color/red"
-                android:textSize="20sp"
+                android:textSize="13sp"
                 tools:text="10:10:10 ">
 
             </TextView>
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnShowOnMap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/bottom_background"
+        android:elevation="5dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:text="@string/show_on_the_map"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_menu" />
 
 
 </RelativeLayout>

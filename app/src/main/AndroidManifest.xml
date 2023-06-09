@@ -14,9 +14,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/bag_travel_flight_plane_airplane_icon"
+        android:icon="@drawable/radar"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/bag_travel_flight_plane_airplane_icon"
+        android:roundIcon="@drawable/radar"
         android:supportsRtl="true"
         android:theme="@style/Theme.AirSearch"
         tools:targetApi="31">
@@ -30,10 +30,13 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
         <activity
             android:name=".ui.info.InfoActivity"
             android:exported="false"
-            android:theme="@style/Theme.AirSearch.NoActionBar">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AirSearch.NoActionBar"
+            tools:ignore="LockedOrientationActivity">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -42,16 +45,13 @@
             android:name=".ui.MainActivity"
             android:exported="true"
             android:label="AirSearch"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AirSearch.NoActionBar"
-            tools:ignore="RedundantLabel">
-
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
-
-
-             <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
-
+            tools:ignore="LockedOrientationActivity,RedundantLabel">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

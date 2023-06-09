@@ -36,7 +36,12 @@ class InfoActivity : AppCompatActivity(), InfoContract.View {
             backButton.setOnClickListener {
                 finish()
             }
-            showOnMapButton.setOnClickListener {
+            imgBtnShowOnMap.setOnClickListener {
+                if (icao != null) {
+                    showFlightOnMap(icao)
+                }
+            }
+            btnShowOnMap.setOnClickListener {
                 if (icao != null) {
                     showFlightOnMap(icao)
                 }

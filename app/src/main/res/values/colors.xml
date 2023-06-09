@@ -12,4 +12,11 @@
     <color name="blue">#0c63e7</color>
     <color name="sky">#0a85ed</color>
     <color name="whiteblue">#d9f0ff</color>
+    <color name="gray">#858787</color>
+    <color name="lightgray">#858787</color>
+    <color name="darkblue">#051923</color>
+    <color name="oceanblue">#003554</color>
+    <color name="blue2">#006494</color>
+    <color name="blue3">#0582ca</color>
+    <color name="brightblue">#00a6fb</color>
 </resources>

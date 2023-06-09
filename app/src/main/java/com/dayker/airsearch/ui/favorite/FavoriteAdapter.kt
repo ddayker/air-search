@@ -4,8 +4,10 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.dayker.airsearch.R
 import com.dayker.airsearch.database.entity.Flight
 import com.dayker.airsearch.databinding.ItemFavoriteBinding
 import com.dayker.airsearch.ui.DiffCallback
@@ -57,6 +59,9 @@ class FavoriteAdapter(private var dataSet: List<Flight>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(dataSet[position])
+        val animation =
+            AnimationUtils.loadAnimation(holder.itemView.context, R.anim.download_animation)
+        holder.itemView.startAnimation(animation)
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, InfoActivity::class.java)
             intent.putExtra(Constants.ICAO_KEY, dataSet[position].icao)
