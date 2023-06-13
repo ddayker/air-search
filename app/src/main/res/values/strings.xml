@@ -31,4 +31,9 @@
     <string name="show_on_the_map">Show on the map</string>
     <string name="departure_text">Departure:</string>
     <string name="arrival">Arrival:</string>
+    <string name="your_region_is">YOUR REGION:</string>
+    <string name="click_on_another_country_to_change">click on another country to change</string>
+    <string name="reset_to_device_region">Reset to device region</string>
+    <string name="region_changed">Your region has been changed to:</string>
+    <string name="no_flights_were_found_in_your_region">No flights were found in your region.</string>
 </resources>

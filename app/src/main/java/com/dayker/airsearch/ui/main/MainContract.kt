@@ -3,6 +3,7 @@ package com.dayker.airsearch.ui.main
 import com.dayker.airsearch.base.BasePresenter
 import com.dayker.airsearch.base.BaseView
 import com.dayker.airsearch.model.ActualFlight
+import com.dayker.airsearch.utils.Constants.WITHOUT_REGION
 
 interface MainContract {
 
@@ -13,8 +14,7 @@ interface MainContract {
     }
 
     abstract class Presenter : BasePresenter<View>() {
-        abstract fun downloadDataFromApi()
+        abstract fun downloadDataFromApi(region: String = WITHOUT_REGION)
         abstract fun getRemoteMessage(key: String)
     }
-
 }

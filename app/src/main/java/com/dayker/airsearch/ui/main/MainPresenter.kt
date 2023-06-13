@@ -2,32 +2,37 @@ package com.dayker.airsearch.ui.main
 
 import com.dayker.airsearch.network.ApiService
 import com.dayker.airsearch.utils.Constants
-import com.dayker.airsearch.utils.Constants.REGION
+import com.dayker.airsearch.utils.Constants.WITHOUT_REGION
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 
 class MainPresenter(
     private val apiService: ApiService
 ) : MainContract.Presenter() {
 
-    override fun downloadDataFromApi() {
+    override fun downloadDataFromApi(region: String) {
         view?.initRecyclerView()
-        coroutineScope.launch {
+        val scope = CoroutineScope(Dispatchers.IO)
+        scope.launch {
             try {
-                val response =
-                    apiService.getFlights(
+                val response = if (region != WITHOUT_REGION) {
+                    apiService.getFlightsWithRegion(
                         Constants.API_KEY,
-                        REGION
+                        region
                     )
+                } else {
+                    apiService.getFlights(
+                        Constants.API_KEY
+                    )
+                }
                 withContext(Dispatchers.Main) {
                     view?.setContent(response.response)
                 }
             } catch (e: Exception) {
                 println(javaClass.simpleName + e.message)
             }
+            scope.cancel()
         }
     }
 
