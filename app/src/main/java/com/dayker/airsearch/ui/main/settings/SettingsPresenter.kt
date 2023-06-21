@@ -1,13 +1,13 @@
 package com.dayker.airsearch.ui.main.settings
 
-import com.dayker.airsearch.network.ApiService
+import com.dayker.airsearch.network.FlightsApiService
 import com.dayker.airsearch.utils.Constants.API_KEY
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class SettingsPresenter(
-    private val apiService: ApiService
+    private val flightsApiService: FlightsApiService
 ) : SettingsContract.Presenter() {
 
     override fun downloadCountriesFromApi() {
@@ -15,7 +15,7 @@ class SettingsPresenter(
         coroutineScope.launch {
             try {
                 val response =
-                    apiService.getCountries(API_KEY)
+                    flightsApiService.getCountries(API_KEY)
                 withContext(Dispatchers.Main) {
                     view?.setCountries(response.countries)
                 }

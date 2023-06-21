@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.dayker.airsearch.R
 import com.dayker.airsearch.database.entity.Flight
 import com.dayker.airsearch.databinding.ActivityInfoBinding
-import com.dayker.airsearch.model.FlightInfo
+import com.dayker.airsearch.model.info.FlightInfo
 import com.dayker.airsearch.ui.MainActivity
 import com.dayker.airsearch.ui.search.SearchFragment
 import com.dayker.airsearch.utils.Constants.ICAO_KEY

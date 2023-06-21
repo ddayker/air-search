@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/darkblue"
+    android:background="@color/white"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="16dp">
@@ -15,8 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:textAppearance="?android:textAppearanceMedium"
-        android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textColor="@color/darkblue"
+        android:textSize="14sp"
         android:textStyle="bold"
         tools:text="Minsk-Moscow" />
 
@@ -26,9 +26,20 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:textAppearance="?android:textAppearanceMedium"
-        android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textColor="@color/darkblue"
+        android:textSize="14sp"
         android:textStyle="bold"
         tools:text="Afl564" />
+
+    <TextView
+        android:id="@+id/tvMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/click_for_full_info"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/darkblue"
+        android:textSize="12sp"
+        android:textStyle="italic" />
 
 </LinearLayout>

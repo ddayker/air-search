@@ -1,12 +1,12 @@
 package com.dayker.airsearch.network
 
-import com.dayker.airsearch.model.ActualFlightResponse
-import com.dayker.airsearch.model.CountriesResponse
-import com.dayker.airsearch.model.FlightInfoResponse
+import com.dayker.airsearch.model.country.CountriesResponse
+import com.dayker.airsearch.model.flight.ActualFlightResponse
+import com.dayker.airsearch.model.info.FlightInfoResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface ApiService {
+interface FlightsApiService {
     @GET("flights")
     suspend fun getFlightsWithRegion(
         @Query("api_key") apiKey: String,

@@ -15,12 +15,12 @@ import org.koin.dsl.module
 val presenterModule = module {
     factory<MainContract.Presenter> {
         MainPresenter(
-            apiService = get()
+            flightsApiService = get()
         )
     }
     factory<InfoContract.Presenter> {
         InfoPresenter(
-            apiService = get(),
+            flightsApiService = get(),
             dao = get()
         )
     }
@@ -31,12 +31,13 @@ val presenterModule = module {
     }
     factory<SearchContract.Presenter> {
         SearchPresenter(
-            apiService = get()
+            flightsApiService = get(),
+            geocodeService = get()
         )
     }
     factory<SettingsContract.Presenter> {
         SettingsPresenter(
-            apiService = get()
+            flightsApiService = get()
         )
     }
 }

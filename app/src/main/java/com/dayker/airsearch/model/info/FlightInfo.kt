@@ -1,4 +1,4 @@
-package com.dayker.airsearch.model
+package com.dayker.airsearch.model.info
 
 
 import com.google.gson.annotations.SerializedName

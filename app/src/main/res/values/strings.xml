@@ -36,4 +36,5 @@
     <string name="reset_to_device_region">Reset to device region</string>
     <string name="region_changed">Your region has been changed to:</string>
     <string name="no_flights_were_found_in_your_region">No flights were found in your region.</string>
+    <string name="click_for_full_info">click for full info</string>
 </resources>

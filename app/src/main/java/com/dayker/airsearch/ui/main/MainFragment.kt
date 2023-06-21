@@ -12,12 +12,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dayker.airsearch.R
 import com.dayker.airsearch.databinding.FragmentMainBinding
-import com.dayker.airsearch.model.ActualFlight
-import com.dayker.airsearch.utils.ApiUtils.getDeviceRegion
-import com.dayker.airsearch.utils.ApiUtils.isConnectionError
+import com.dayker.airsearch.model.flight.ActualFlight
 import com.dayker.airsearch.utils.Constants.FIREBASE_MESSAGE_KEY
 import com.dayker.airsearch.utils.Constants.FLIGHTS_LIMIT
 import com.dayker.airsearch.utils.Constants.REGION_KEY
+import com.dayker.airsearch.utils.Utils.getDeviceRegion
+import com.dayker.airsearch.utils.Utils.isConnectionError
 import org.koin.android.ext.android.inject
 
 class MainFragment : Fragment(), MainContract.View {
@@ -102,13 +102,14 @@ class MainFragment : Fragment(), MainContract.View {
     }
 
     private fun showConnectionError() {
+        val reconnectionDelay = 2000L
         binding?.btnSettings?.visibility = View.GONE
         binding?.rv?.visibility = View.GONE
         binding?.tvNoConnection?.visibility = View.VISIBLE
         binding?.ivNoConnection?.visibility = View.VISIBLE
         Handler(Looper.getMainLooper()).postDelayed({
             binding?.btnReconnect?.visibility = View.VISIBLE
-        }, 2000)
+        }, reconnectionDelay)
     }
 
     private fun refreshFragment() {

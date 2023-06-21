@@ -3,7 +3,7 @@ package com.dayker.airsearch.ui.info
 import com.dayker.airsearch.base.BasePresenter
 import com.dayker.airsearch.base.BaseView
 import com.dayker.airsearch.database.entity.Flight
-import com.dayker.airsearch.model.FlightInfo
+import com.dayker.airsearch.model.info.FlightInfo
 
 interface InfoContract {
 

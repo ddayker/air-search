@@ -2,7 +2,7 @@ package com.dayker.airsearch.ui.main
 
 import com.dayker.airsearch.base.BasePresenter
 import com.dayker.airsearch.base.BaseView
-import com.dayker.airsearch.model.ActualFlight
+import com.dayker.airsearch.model.flight.ActualFlight
 import com.dayker.airsearch.utils.Constants.WITHOUT_REGION
 
 interface MainContract {

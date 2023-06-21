@@ -2,19 +2,21 @@ package com.dayker.airsearch.ui.info
 
 import com.dayker.airsearch.database.dao.FlightDao
 import com.dayker.airsearch.database.entity.Flight
-import com.dayker.airsearch.network.ApiService
+import com.dayker.airsearch.network.FlightsApiService
 import com.dayker.airsearch.utils.Constants.API_KEY
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class InfoPresenter(
-    private val apiService: ApiService,
+    private val flightsApiService: FlightsApiService,
     private val dao: FlightDao
 ) : InfoContract.Presenter() {
 
-    // if flight is already in favorite return true and download from db
-    // else download data from api request
+    /**
+     *  if flight is already in favorite return true and download from database
+     *  else download data from api request
+     */
     override fun checkForFavoriteAndDownload(icao: String): Boolean {
         val flight = dao.getFlight(icao)
         return if (flight != null) {
@@ -30,7 +32,7 @@ class InfoPresenter(
         coroutineScope.launch {
             try {
                 val response =
-                    apiService.getFlightInfo(
+                    flightsApiService.getFlightInfo(
                         icao,
                         API_KEY
                     )

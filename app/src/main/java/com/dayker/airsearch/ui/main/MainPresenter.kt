@@ -1,6 +1,6 @@
 package com.dayker.airsearch.ui.main
 
-import com.dayker.airsearch.network.ApiService
+import com.dayker.airsearch.network.FlightsApiService
 import com.dayker.airsearch.utils.Constants
 import com.dayker.airsearch.utils.Constants.WITHOUT_REGION
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
@@ -8,7 +8,7 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 import kotlinx.coroutines.*
 
 class MainPresenter(
-    private val apiService: ApiService
+    private val flightsApiService: FlightsApiService
 ) : MainContract.Presenter() {
 
     override fun downloadDataFromApi(region: String) {
@@ -17,12 +17,12 @@ class MainPresenter(
         scope.launch {
             try {
                 val response = if (region != WITHOUT_REGION) {
-                    apiService.getFlightsWithRegion(
+                    flightsApiService.getFlightsWithRegion(
                         Constants.API_KEY,
                         region
                     )
                 } else {
-                    apiService.getFlights(
+                    flightsApiService.getFlights(
                         Constants.API_KEY
                     )
                 }

@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.dayker.airsearch.R
 import com.dayker.airsearch.databinding.ItemCountryBinding
-import com.dayker.airsearch.model.Country
+import com.dayker.airsearch.model.country.Country
 import com.dayker.airsearch.ui.DiffCallback
 import com.dayker.airsearch.utils.Constants.REGION_KEY
 import com.google.android.material.snackbar.Snackbar

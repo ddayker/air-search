@@ -2,7 +2,7 @@ package com.dayker.airsearch.ui.main.settings
 
 import com.dayker.airsearch.base.BasePresenter
 import com.dayker.airsearch.base.BaseView
-import com.dayker.airsearch.model.Country
+import com.dayker.airsearch.model.country.Country
 
 interface SettingsContract {
 

@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.dayker.airsearch.R
 import com.dayker.airsearch.databinding.ItemFlightBinding
-import com.dayker.airsearch.model.ActualFlight
+import com.dayker.airsearch.model.flight.ActualFlight
 import com.dayker.airsearch.ui.DiffCallback
 import com.dayker.airsearch.ui.info.InfoActivity
 import com.dayker.airsearch.utils.Constants.ICAO_KEY

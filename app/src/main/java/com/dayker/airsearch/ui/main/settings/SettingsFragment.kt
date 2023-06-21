@@ -10,9 +10,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dayker.airsearch.R
 import com.dayker.airsearch.databinding.FragmentSettingsBinding
-import com.dayker.airsearch.model.Country
-import com.dayker.airsearch.utils.ApiUtils.getDeviceRegion
+import com.dayker.airsearch.model.country.Country
 import com.dayker.airsearch.utils.Constants
+import com.dayker.airsearch.utils.Utils.getDeviceRegion
 import com.google.android.material.snackbar.Snackbar
 import org.koin.android.ext.android.inject
 

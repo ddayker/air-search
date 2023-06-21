@@ -68,19 +68,37 @@
         app:layout_constraintTop_toBottomOf="@id/header"
         tools:text="GLC" />
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/img"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/animationLayout"
         android:layout_width="0dp"
+        app:lottie_colorFilter="@color/white"
         android:layout_height="50dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="4dp"
         app:layout_constraintEnd_toStartOf="@+id/tvAirport2"
         app:layout_constraintStart_toEndOf="@+id/tvAirport1"
-        app:layout_constraintTop_toBottomOf="@id/header"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/plane_line" />
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/img"
+            android:layout_marginBottom="15dp"
+            android:layout_width="0dp"
+            app:lottie_colorFilter="@color/white"
+            android:layout_height="100dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/interaction" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <TextView
@@ -107,7 +125,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.475"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/img"
+        app:layout_constraintTop_toBottomOf="@id/animationLayout"
         tools:text="800 km/h" />
 
 
