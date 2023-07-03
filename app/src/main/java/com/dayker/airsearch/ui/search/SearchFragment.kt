@@ -14,6 +14,8 @@ import com.dayker.airsearch.model.location.Coordinates
 import com.dayker.airsearch.ui.info.InfoActivity
 import com.dayker.airsearch.utils.Constants
 import com.dayker.airsearch.utils.Constants.IMAGE_ANGLE
+import com.dayker.airsearch.utils.Constants.ZOOM_DURATION
+import com.dayker.airsearch.utils.Constants.ZOOM_LEVEL
 import com.dayker.airsearch.utils.Utils.bitmapDescriptorFromVector
 import com.dayker.airsearch.utils.Utils.isConnectionError
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -92,7 +94,8 @@ class SearchFragment : Fragment(), SearchContract.View {
         planePosition = LatLng(latitude, longitude)
         presenter.getRouteCoordinatesAsync(flight.depCity, flight.arrCity).await()
         addPlaneMarkerToMap(rout, searchIcao)
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(planePosition, 5F))
+        val cameraUpdate = CameraUpdateFactory.newLatLngZoom(planePosition, ZOOM_LEVEL)
+        googleMap.animateCamera(cameraUpdate, ZOOM_DURATION, null)
     }
 
     /**

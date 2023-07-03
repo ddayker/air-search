@@ -2,7 +2,7 @@ package com.dayker.airsearch.ui.main
 
 import com.dayker.airsearch.network.FlightsApiService
 import com.dayker.airsearch.utils.Constants
-import com.dayker.airsearch.utils.Constants.WITHOUT_REGION
+import com.dayker.airsearch.utils.Constants.WITHOUT_REGION_KEY
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 import kotlinx.coroutines.*
@@ -16,7 +16,7 @@ class MainPresenter(
         val scope = CoroutineScope(Dispatchers.IO)
         scope.launch {
             try {
-                val response = if (region != WITHOUT_REGION) {
+                val response = if (region != WITHOUT_REGION_KEY) {
                     flightsApiService.getFlightsWithRegion(
                         Constants.API_KEY,
                         region
@@ -27,7 +27,9 @@ class MainPresenter(
                     )
                 }
                 withContext(Dispatchers.Main) {
-                    view?.setContent(response.response)
+                    view?.setContent(response.response.filter { flight ->
+                        !flight.depIcao.isNullOrEmpty() && !flight.arrIcao.isNullOrEmpty() && !flight.flightIcao.isNullOrEmpty()
+                    })
                 }
             } catch (e: Exception) {
                 println(javaClass.simpleName + e.message)

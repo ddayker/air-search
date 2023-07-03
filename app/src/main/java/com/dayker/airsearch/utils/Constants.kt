@@ -12,7 +12,13 @@ object Constants {
     const val REGION_KEY = "region"
     const val FIREBASE_MESSAGE_KEY = "app_message"
     const val SHOW_ON_MAP_KEY = "show_map"
-    const val WITHOUT_REGION = "without_region"
+    const val WITHOUT_REGION_KEY = "without_region"
+
+    /**
+     * Configuration animation of the zoom
+     */
+    const val ZOOM_LEVEL = 8F
+    const val ZOOM_DURATION = 2500
 
     /**
      * The number limiting the number of flights on the main page.

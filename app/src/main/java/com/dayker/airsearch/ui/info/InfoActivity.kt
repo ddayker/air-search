@@ -2,6 +2,7 @@ package com.dayker.airsearch.ui.info
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.dayker.airsearch.R
 import com.dayker.airsearch.database.entity.Flight
@@ -13,6 +14,8 @@ import com.dayker.airsearch.utils.Constants.ICAO_KEY
 import com.dayker.airsearch.utils.Constants.SHOW_ON_MAP_KEY
 import com.google.android.material.snackbar.Snackbar
 import org.koin.android.ext.android.inject
+import java.text.SimpleDateFormat
+import java.util.*
 
 class InfoActivity : AppCompatActivity(), InfoContract.View {
 
@@ -48,7 +51,7 @@ class InfoActivity : AppCompatActivity(), InfoContract.View {
             }
             favoriteButton.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) {
-                    presenter.addToFavorite(initNewFlight())
+                    presenter.addToFavorite(initNewFavoriteFlight())
                     makeSnackbar(getString(R.string.add_favorite_message))
                 } else {
                     presenter.deleteFromFavorite(titleICAO.text.toString())
@@ -71,6 +74,15 @@ class InfoActivity : AppCompatActivity(), InfoContract.View {
             tvAirport2.text = flight.arrName
             tvTime2.text = flight.arrTime
             tvRealTime2.text = flight.arrActualTime
+            if (company.text.isEmpty()) {
+                company.text = getString(R.string.no_information)
+            }
+            if (tvCity1.text.isEmpty()) {
+                tvCity1.text = getString(R.string.no_information)
+            }
+            if (tvCity2.text.isEmpty()) {
+                tvCity2.text = getString(R.string.no_information)
+            }
         }
     }
 
@@ -84,6 +96,10 @@ class InfoActivity : AppCompatActivity(), InfoContract.View {
             tvCity2.text = flight.arrCity
             tvAirport2.text = flight.arrAirport
             tvTime2.text = flight.arrTime
+            // if the flight is finished-the functionality of displaying on the map is not available
+            if (tvTime2.text.isEmpty() || isDateExpired(tvTime2.text.toString())) {
+                disableShowOnMap()
+            }
         }
     }
 
@@ -93,7 +109,7 @@ class InfoActivity : AppCompatActivity(), InfoContract.View {
         }
     }
 
-    private fun initNewFlight(): Flight {
+    private fun initNewFavoriteFlight(): Flight {
         with(binding) {
             return Flight(
                 icao = titleICAO.text.toString(),
@@ -106,6 +122,19 @@ class InfoActivity : AppCompatActivity(), InfoContract.View {
                 arrTime = tvTime2.text.toString()
             )
         }
+    }
+
+    private fun disableShowOnMap() {
+        binding.btnShowOnMap.visibility = View.GONE
+        binding.imgBtnShowOnMap.isEnabled = false
+
+    }
+
+    private fun isDateExpired(dateTimeString: String): Boolean {
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
+        val dateTime = dateFormat.parse(dateTimeString)
+        val currentTime = Calendar.getInstance().time
+        return dateTime!!.before(currentTime)
     }
 
     private fun showFlightOnMap(icao: String) {

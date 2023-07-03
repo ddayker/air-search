@@ -100,7 +100,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="AEROFLOT" />
+            android:text="@string/no_information" />
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/sigmal"
@@ -159,7 +159,7 @@
                 android:layout_marginEnd="20dp"
                 android:textColor="@color/white"
                 android:textSize="20sp"
-                tools:text="Minsk">
+                android:text="@string/no_information">
 
             </TextView>
 
@@ -171,7 +171,7 @@
                 android:layout_marginTop="2dp"
                 android:textColor="@color/white"
                 android:textSize="16sp"
-                tools:text="Aeroport Workd">
+                android:text="@string/no_information">
 
             </TextView>
 
@@ -254,7 +254,7 @@
                 android:layout_marginEnd="20dp"
                 android:textColor="@color/white"
                 android:textSize="20sp"
-                tools:text="Minsk">
+                android:text="@string/no_information">
 
             </TextView>
 
@@ -266,7 +266,7 @@
                 android:layout_marginTop="2dp"
                 android:textColor="@color/white"
                 android:textSize="16sp"
-                tools:text="Aeroport Workd">
+                android:text="@string/no_information">
 
             </TextView>
 
