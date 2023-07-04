@@ -38,4 +38,5 @@
     <string name="no_flights_were_found_in_your_region">No flights were found in your region.</string>
     <string name="click_for_full_info">click for full info</string>
     <string name="no_information">no information</string>
+    <string name="you_haven_t_added_any_flights_to_your_favorites">You haven\'t added any flights to your favorites.</string>
 </resources>

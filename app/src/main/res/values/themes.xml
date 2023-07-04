@@ -14,6 +14,7 @@
         <!-- Customize your theme here. -->
         <item name="fontFamily">@font/days</item>
         <item name="snackbarStyle">@style/CustomSnackbar</item>
+        <item name="snackbarTextViewStyle">@style/CustomSnackbar</item>
     </style>
 
     <style name="Theme.AirSearch.NoActionBar">
@@ -26,8 +27,9 @@
     <style name="Theme.AirSearch.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="CustomSnackbar" parent="Widget.Design.Snackbar">
-        <item name="android:background">@color/darkblue</item>
+        <item name="android:background">@color/oceanblue</item>
         <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
     </style>
 </resources>
 

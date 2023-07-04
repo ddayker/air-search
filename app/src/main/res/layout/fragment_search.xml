@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/white"
     android:layout_height="match_parent"
     tools:context=".ui.search.SearchFragment">
 
@@ -30,6 +31,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.32"
             app:layout_constraintStart_toStartOf="parent"
+            app:startIconTint="@color/darkblue"
             app:layout_constraintTop_toTopOf="parent"
             app:startIconDrawable="@drawable/ic_baseline_flight_takeoff">
 
@@ -41,6 +43,7 @@
                 android:background="@drawable/rounded_edittext_background"
                 android:backgroundTint="@color/white"
                 android:hint="@string/search_by_icao_code"
+                android:textColor="@color/darkblue"
                 android:inputType="textPersonName"
                 android:padding="10dp"
                 android:paddingBottom="20dp" />

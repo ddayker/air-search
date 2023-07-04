@@ -36,6 +36,9 @@ class FavoriteFragment : Fragment(), FavoriteContract.View {
     }
 
     override fun setContent(flights: List<Flight>) {
+        if (flights.isEmpty()) {
+            binding?.tvEmptyFavorites?.visibility = View.VISIBLE
+        }
         if (adapter == null) {
             adapter = FavoriteAdapter(flights)
             binding?.rv?.adapter = adapter

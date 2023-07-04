@@ -37,12 +37,12 @@ class MainFragment : Fragment(), MainContract.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        showDownloadBar()
         val region = if (sharedPreferences.contains(REGION_KEY)) {
             sharedPreferences.getString(REGION_KEY, "").toString()
         } else {
             getDeviceRegion()
         }
-
         if (isConnectionError(requireContext())) {
             showConnectionError()
         } else {
@@ -50,7 +50,6 @@ class MainFragment : Fragment(), MainContract.View {
             presenter.attachView(this)
             presenter.downloadDataFromApi(region)
         }
-
         binding?.tvMain?.setOnClickListener {
             presenter.getRemoteMessage(FIREBASE_MESSAGE_KEY)
         }
@@ -60,11 +59,13 @@ class MainFragment : Fragment(), MainContract.View {
         binding?.regionRadio?.setOnClickListener {
             presenter.downloadDataFromApi(region)
             binding?.btnSettings?.visibility = View.VISIBLE
+            showDownloadBar()
         }
 
         binding?.allRadio?.setOnClickListener {
             presenter.downloadDataFromApi()
             binding?.btnSettings?.visibility = View.GONE
+            showDownloadBar()
         }
         binding?.btnSettings?.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_settingsFragment)
@@ -90,6 +91,8 @@ class MainFragment : Fragment(), MainContract.View {
         } else {
             adapter?.updateData(flights.take(FLIGHTS_LIMIT))
         }
+        binding?.rv?.visibility = View.VISIBLE
+        binding?.progressAnimation?.visibility = View.GONE
     }
 
     override fun setRemoteText(text: String) {
@@ -103,6 +106,7 @@ class MainFragment : Fragment(), MainContract.View {
 
     private fun showConnectionError() {
         val reconnectionDelay = 2000L
+        binding?.progressAnimation?.visibility = View.GONE
         binding?.btnSettings?.visibility = View.GONE
         binding?.rv?.visibility = View.GONE
         binding?.tvNoConnection?.visibility = View.VISIBLE
@@ -123,16 +127,24 @@ class MainFragment : Fragment(), MainContract.View {
     }
 
     private fun showFlightsNotFound() {
+        binding?.progressAnimation?.visibility = View.GONE
         binding?.CLNotFound?.visibility = View.VISIBLE
         binding?.ivNotFound?.visibility = View.VISIBLE
         binding?.tvNotFound?.visibility = View.VISIBLE
     }
 
     private fun hideNotFoundMessage() {
+        binding?.progressAnimation?.visibility = View.GONE
         binding?.CLNotFound?.visibility = View.GONE
         binding?.ivNotFound?.visibility = View.GONE
         binding?.tvNotFound?.visibility = View.GONE
     }
+
+    private fun showDownloadBar() {
+        binding?.rv?.visibility = View.INVISIBLE
+        binding?.progressAnimation?.visibility = View.VISIBLE
+    }
+
 
 }
 
