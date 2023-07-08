@@ -1,6 +1,5 @@
 package com.dayker.airsearch.ui.search
 
-import android.util.Log
 import com.dayker.airsearch.network.FlightsApiService
 import com.dayker.airsearch.network.GeocodeService
 import com.dayker.airsearch.utils.Constants
@@ -60,7 +59,6 @@ class SearchPresenter(
                     }
                 }
             } catch (e: Exception) {
-                Log.e("GEOCODE", "Geocoding error")
                 println(e.message)
             }
         }

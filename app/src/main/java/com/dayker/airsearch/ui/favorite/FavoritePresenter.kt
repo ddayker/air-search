@@ -16,7 +16,6 @@ class FavoritePresenter(
             withContext(Dispatchers.Main) {
                 view?.setContent(flight)
             }
-            view?.setContent(flight)
         }
     }
 }

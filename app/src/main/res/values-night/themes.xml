@@ -6,12 +6,14 @@
         <item name="colorPrimaryVariant">@color/darkblue</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/white</item>
+        <item name="colorSecondary">@color/darkblue</item>
         <item name="colorSecondaryVariant">@color/darkblue</item>
         <item name="colorOnSecondary">@color/gray</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:textColorHint">@color/darkblue</item>
+        <item name="android:editTextColor">@color/darkblue</item>
         <item name="fontFamily">@font/days</item>
         <item name="snackbarStyle">@style/CustomSnackbar</item>
         <item name="snackbarTextViewStyle">@style/CustomSnackbar</item>

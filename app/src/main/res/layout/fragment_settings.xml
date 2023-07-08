@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/white"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".ui.main.settings.SettingsFragment">
 
@@ -77,16 +77,16 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:textSize="12sp"
         android:background="@drawable/reset_button"
-        android:text="@string/reset_to_device_region" />
+        android:text="@string/reset_to_device_region"
+        android:textSize="12sp" />
 
     <LinearLayout
         android:id="@+id/searchLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="110dp"
         android:background="@drawable/reset_button"
@@ -95,20 +95,22 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
-            android:backgroundTint="@color/darkblue"
-            android:layout_height="wrap_content">
+            android:backgroundTint="@color/darkblue">
 
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/search_view"
-                android:elevation="2dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/search_view"
+                android:elevation="2dp"
+                app:closeIcon="@drawable/ic_baseline_close_24"
                 app:iconifiedByDefault="false"
-                android:background="@drawable/search_view" />
-
+                app:queryBackground="@null"
+                app:searchIcon="@drawable/ic_baseline_search" />
         </androidx.cardview.widget.CardView>
 
 

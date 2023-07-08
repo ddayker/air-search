@@ -53,7 +53,7 @@ java {
 dependencies {
     // Map
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
-    // dependencies for Firebase
+    // Firebase
     implementation platform('com.google.firebase:firebase-bom:32.0.0')
     implementation 'com.google.android.gms:play-services-measurement-api:21.2.2'
     implementation 'com.google.firebase:firebase-crashlytics-ktx'
@@ -76,10 +76,18 @@ dependencies {
     // Room
     implementation 'androidx.room:room-ktx:2.5.1'
     kapt "androidx.room:room-compiler:2.5.1"
-    // Mock
-    testImplementation "org.junit.jupiter:junit-jupiter: 5.8.2"
-    testImplementation "org.mockito:mockito-core:4.0.0"
-    testImplementation "org.mockito.kotlin:mockito-kotlin: 4.1.0"
+    // Tests
+    testImplementation "org.junit.jupiter:junit-jupiter:5.8.2"
+    testImplementation "androidx.test.ext:truth:1.5.0"
+    androidTestImplementation "androidx.test.ext:truth:1.5.0"
+    testImplementation "org.mockito:mockito-core:5.3.1"
+    testImplementation "org.mockito.kotlin:mockito-kotlin:4.1.0"
+    androidTestImplementation "org.mockito.kotlin:mockito-kotlin:4.1.0"
+    androidTestImplementation 'org.mockito:mockito-android:5.3.1'
+    androidTestImplementation 'androidx.arch.core:core-testing:2.2.0'
+    testImplementation 'org.mockito:mockito-inline:2.26.0'
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4'
+    androidTestImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4'
     // Work
     implementation "androidx.work:work-runtime-ktx:2.8.1"
     // Lottie
